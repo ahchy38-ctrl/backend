@@ -52,12 +52,15 @@ app.post("/check", async (req, res) => {
     const found = fullText.includes(cleanKeyword);
 
     return res.json({
-      found,
-      debug: {
-        bodyLength: bodyText.length,
-        jsonLength: jsonText.length,
-      },
-    });
+  found,
+  debug: {
+    bodyLength: bodyText.length,
+    jsonLength: jsonText.length,
+  },
+  bodyPreview: bodyText.substring(0, 2000), // first 2000 chars
+  jsonPreview: jsonText.substring(0, 2000),
+  fullTextPreview: fullText.substring(0, 2000),
+});
   } catch (e) {
     return res.status(500).json({
       found: false,
