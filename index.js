@@ -3,6 +3,12 @@ import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 import cors from "cors";
 
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("Server running on", PORT);
+});
+
 const app = express();
 app.use(cors());
 app.use(express.json());
